@@ -23,7 +23,7 @@ class Query(graphene.ObjectType):
     get_all_users = graphene.List(User)
 
     @staticmethod
-    def resolve_get_all_lessons(info):
+    def resolve_get_all_lessons(root, info):
         query = Lesson.get_query(info=info)
         return query.all()
 
