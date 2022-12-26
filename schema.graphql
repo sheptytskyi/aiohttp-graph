@@ -1,0 +1,20 @@
+type Hall {
+    id: Int!
+    city: String
+    street: String
+}
+
+type User {
+    id: Int!
+    name: String
+}
+
+type Lesson {
+    id: Int!
+    hall: Hall
+    coach: User
+}
+
+type Query {
+    getAllLessons: [Lesson!]!
+}
