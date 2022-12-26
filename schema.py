@@ -1,6 +1,6 @@
 import graphene
 from graphene_sqlalchemy import SQLAlchemyObjectType
-from sqlalchemy import select, join, outerjoin
+from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 
 import models
@@ -23,15 +23,6 @@ class Lesson(SQLAlchemyObjectType):
 
 class Query(graphene.ObjectType):
     get_all_lessons = graphene.List(Lesson)
-    get_all_users = graphene.List(User)
-
-    @staticmethod
-    async def resolve_get_all_users(root, info):
-        result = await models.async_session.execute(
-            select(models.User)
-        )
-
-        return result.scalars().all()
 
     @staticmethod
     async def resolve_get_all_lessons(root, info):
