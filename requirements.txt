@@ -17,6 +17,7 @@ idna==3.4
 multidict==6.0.4
 promise==2.3
 psycopg2==2.9.5
+python-dotenv==0.21.0
 Rx==1.6.3
 singledispatch==3.7.0
 six==1.16.0

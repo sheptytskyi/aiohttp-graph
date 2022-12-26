@@ -2,7 +2,7 @@ from aiohttp import web
 from aiohttp_graphql import GraphQLView
 from graphql.execution.executors.asyncio import AsyncioExecutor
 
-from models import engine, Base
+from config import engine, Base
 from schema import schema
 
 

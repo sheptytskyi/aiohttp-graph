@@ -1,28 +1,7 @@
-from sqlalchemy import (
-    Column,
-    ForeignKey,
-    Integer,
-    String
-)
-from sqlalchemy.orm import declarative_base, relationship, sessionmaker, scoped_session
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy.orm import relationship
 
-DATABASE_URL = 'postgresql+asyncpg://postgres:root@localhost/aiohttp-graph'
-
-
-def _async_db_uri(uri: str) -> str:
-    if 'asyncpg' not in uri:
-        uri = uri.split(':', 1)[0] + '+asyncpg' + ':' + uri.split(':', 1)[1]
-
-    return uri
-
-
-engine = create_async_engine(_async_db_uri(DATABASE_URL), future=True, echo=True)
-CustomAsyncSession = scoped_session(
-    sessionmaker(bind=engine, expire_on_commit=False, class_=AsyncSession)
-)
-async_session = CustomAsyncSession()
-Base = declarative_base()
+from config import Base
 
 
 class Hall(Base):

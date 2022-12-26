@@ -3,6 +3,7 @@ from graphene_sqlalchemy import SQLAlchemyObjectType
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 
+from config import async_session
 import models
 
 
@@ -26,7 +27,7 @@ class Query(graphene.ObjectType):
 
     @staticmethod
     async def resolve_get_all_lessons(root, info):
-        result = await models.async_session.execute(
+        result = await async_session.execute(
             select(models.Lesson).options(
                 selectinload(models.Lesson.hall),
                 selectinload(models.Lesson.coach)
