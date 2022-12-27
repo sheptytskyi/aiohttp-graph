@@ -3,8 +3,8 @@ from graphene_sqlalchemy import SQLAlchemyObjectType
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 
-from config import async_session
-import models
+from app.config import async_session
+from app import models
 
 
 class Hall(SQLAlchemyObjectType):

@@ -5,10 +5,10 @@ from dotenv import load_dotenv
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import scoped_session, sessionmaker, declarative_base
 
-load_dotenv('.env')
+load_dotenv(override=True)
 
-DATABASE_URL = f'''postgresql+asyncpg://{os.environ['DB_USER']}:{os.environ['DB_PASS']}
-                    @{os.environ['DB_HOST']}/{os.environ['DB_NAME']}'''
+DATABASE_URL = f"postgresql+asyncpg://{os.environ['DB_USER']}:{os.environ['DB_PASS']}" \
+               f"@{os.environ['DB_HOST']}/{os.environ['DB_NAME']}"
 
 
 def _async_db_uri(uri: str) -> str:
