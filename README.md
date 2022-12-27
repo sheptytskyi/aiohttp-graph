@@ -29,12 +29,15 @@ DB_PASS=<your_db_user_pass>
 DB_HOST=<your_db_host>
 DB_NAME=<your_db_name>
 ```
-5. Startup server
+5. Apply migrations
+```python
+alembic upgrade head
+```
+6. Startup server
 ```python
 python app.py
 ```
-
-6. Go to endpoint
+7. Go to endpoint
 ```python
 http://localhost:8080/graphql
 ```
